@@ -104,18 +104,25 @@
 	    hashHistory = _require.hashHistory;
 
 	var Main = __webpack_require__(223);
+	var Timer = __webpack_require__(225);
+	var Countdown = __webpack_require__(226);
 
 	// Load foundations-sites
-	__webpack_require__(224);
+	__webpack_require__(227);
 	$(document).foundation();
 
 	// App css
-	__webpack_require__(228);
+	__webpack_require__(231);
 
 	ReactDOM.render(React.createElement(
 	  Router,
 	  { history: hashHistory },
-	  React.createElement(Route, { path: '/', component: Main })
+	  React.createElement(
+	    Route,
+	    { path: '/', component: Main },
+	    React.createElement(IndexRoute, { component: Timer }),
+	    React.createElement(Route, { path: 'countdown', component: Countdown })
+	  )
 	), document.getElementById('app'));
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
@@ -24906,7 +24913,7 @@
 	'use strict';
 
 	var React = __webpack_require__(8);
-	var Navigation = __webpack_require__(230);
+	var Navigation = __webpack_require__(224);
 
 	var Main = React.createClass({
 	  displayName: 'Main',
@@ -24940,13 +24947,129 @@
 /* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	var React = __webpack_require__(8);
+
+	var _require = __webpack_require__(166),
+	    Link = _require.Link,
+	    IndexLink = _require.IndexLink;
+
+	var Navigation = function Navigation() {
+	    return React.createElement(
+	        'div',
+	        { className: 'top-bar' },
+	        React.createElement(
+	            'div',
+	            { className: 'top-bar-left' },
+	            React.createElement(
+	                'ul',
+	                { className: 'menu' },
+	                React.createElement(
+	                    'li',
+	                    { className: 'menu-text' },
+	                    'React Timer App'
+	                ),
+	                React.createElement(
+	                    'li',
+	                    null,
+	                    React.createElement(
+	                        IndexLink,
+	                        { to: '/', activeClassName: 'active-link' },
+	                        'Timer'
+	                    )
+	                ),
+	                React.createElement(
+	                    'li',
+	                    null,
+	                    React.createElement(
+	                        Link,
+	                        { to: '/countdown', activeClassName: 'active-link' },
+	                        'Countdown'
+	                    )
+	                )
+	            )
+	        ),
+	        React.createElement(
+	            'div',
+	            { className: 'top-bar-right' },
+	            React.createElement(
+	                'ul',
+	                { className: 'menu' },
+	                React.createElement(
+	                    'li',
+	                    { className: 'menu-text' },
+	                    'Created by ',
+	                    React.createElement(
+	                        'a',
+	                        { href: 'http://www.mead.io', target: '_blank' },
+	                        'Jose Zapata'
+	                    )
+	                ),
+	                React.createElement('li', null),
+	                React.createElement('li', null)
+	            )
+	        )
+	    );
+	};
+
+	module.exports = Navigation;
+
+/***/ },
+/* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(8);
+
+	var Timer = React.createClass({
+	    displayName: 'Timer',
+
+	    render: function render() {
+	        return React.createElement(
+	            'p',
+	            null,
+	            'Timer.jsx'
+	        );
+	    }
+	});
+
+	module.exports = Timer;
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(8);
+
+	var Countdown = React.createClass({
+	    displayName: 'Countdown',
+
+	    render: function render() {
+	        return React.createElement(
+	            'p',
+	            null,
+	            'Countdown.jsx'
+	        );
+	    }
+	});
+
+	module.exports = Countdown;
+
+/***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(225);
+	var content = __webpack_require__(228);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(227)(content, {});
+	var update = __webpack_require__(230)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -24963,10 +25086,10 @@
 	}
 
 /***/ },
-/* 225 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(226)();
+	exports = module.exports = __webpack_require__(229)();
 	// imports
 
 
@@ -24977,7 +25100,7 @@
 
 
 /***/ },
-/* 226 */
+/* 229 */
 /***/ function(module, exports) {
 
 	/*
@@ -25033,7 +25156,7 @@
 
 
 /***/ },
-/* 227 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -25287,16 +25410,16 @@
 
 
 /***/ },
-/* 228 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(229);
+	var content = __webpack_require__(232);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(227)(content, {});
+	var update = __webpack_require__(230)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -25313,90 +25436,18 @@
 	}
 
 /***/ },
-/* 229 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(226)();
+	exports = module.exports = __webpack_require__(229)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".top-bar, .top-bar ul {\n  background-color: #333333; }\n\n.top-bar .menu-text {\n  color: white; }\n\n.top-bar .menu > .menu-text > a {\n  display: inline;\n  padding: 0; }\n", ""]);
+	exports.push([module.id, ".top-bar, .top-bar ul {\n  background-color: #333333; }\n\n.top-bar .menu-text {\n  color: white; }\n\n.top-bar .menu > .menu-text > a {\n  display: inline;\n  padding: 0; }\n\n.top-bar .active-link {\n  font-weight: bold; }\n", ""]);
 
 	// exports
 
-
-/***/ },
-/* 230 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(8);
-
-	var _require = __webpack_require__(166),
-	    Link = _require.Link,
-	    IndexLink = _require.IndexLink;
-
-	var Navigation = function Navigation() {
-	    return React.createElement(
-	        'div',
-	        { className: 'top-bar' },
-	        React.createElement(
-	            'div',
-	            { className: 'top-bar-left' },
-	            React.createElement(
-	                'ul',
-	                { className: 'menu' },
-	                React.createElement(
-	                    'li',
-	                    { className: 'menu-text' },
-	                    'React Timer App'
-	                ),
-	                React.createElement(
-	                    'li',
-	                    null,
-	                    React.createElement(
-	                        IndexLink,
-	                        { to: '/', activeClassName: 'active-link' },
-	                        'Timer'
-	                    )
-	                ),
-	                React.createElement(
-	                    'li',
-	                    null,
-	                    React.createElement(
-	                        Link,
-	                        { to: '/', activeClassName: 'activelink' },
-	                        'Countdown'
-	                    )
-	                )
-	            )
-	        ),
-	        React.createElement(
-	            'div',
-	            { className: 'top-bar-right' },
-	            React.createElement(
-	                'ul',
-	                { className: 'menu' },
-	                React.createElement(
-	                    'li',
-	                    { className: 'menu-text' },
-	                    'Created by ',
-	                    React.createElement(
-	                        'a',
-	                        { href: 'http://www.mead.io', target: '_blank' },
-	                        'Jose Zapata'
-	                    )
-	                ),
-	                React.createElement('li', null),
-	                React.createElement('li', null)
-	            )
-	        )
-	    );
-	};
-
-	module.exports = Navigation;
 
 /***/ }
 /******/ ]);
